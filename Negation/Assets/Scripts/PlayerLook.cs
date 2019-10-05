@@ -13,21 +13,34 @@ public class PlayerLook : MonoBehaviour
     private float y;
     Vector3 euler;
 
+    bool active;
+
     private void Awake()
     {
-        LockCursor();
         x = lookTransform.eulerAngles.x;
         y = transform.eulerAngles.y;
     }
 
 
-    private void LockCursor()
+    public void ToggleActive()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
+        if (active)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            GameObject myEventSystem = GameObject.Find("EventSystem");
+            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+        }
+        active = !active;
     }
 
     void Update()
     {
+        if (!active) return;
         x -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         y += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
 

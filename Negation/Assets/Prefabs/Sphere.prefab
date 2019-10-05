@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8260513637218195300}
   - component: {fileID: 4601427359580127976}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,4 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34efd3707b7f6fe4c9f2e68ae002cd6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagGroup: {fileID: 11400000, guid: 49154425a03c2024e90cab1a89f31f86, type: 2}
+  parent: {fileID: 0}
+  myTags:
+  - Sphere

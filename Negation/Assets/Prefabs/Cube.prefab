@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1532580847394917896}
   - component: {fileID: 2628369263388437196}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,4 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34efd3707b7f6fe4c9f2e68ae002cd6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tagGroup: {fileID: 11400000, guid: ee1ae37a586fe244ab73c1076ce70a12, type: 2}
+  parent: {fileID: 0}
+  myTags:
+  - Cube

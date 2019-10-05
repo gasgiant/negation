@@ -5,10 +5,26 @@ using UnityEngine;
 public class Invertable : MonoBehaviour
 {
     [SerializeField]
-    protected TagGroup tagGroup;
+    private Invertable parent;
+
+    [SerializeField]
+    private List<string> myTags;
+
+    public List<string> GetTags(int nestingCount = 0)
+    {
+        List<string> tags = new List<string>();
+        if (parent != null)
+            if (nestingCount < 10)
+                tags.AddRange(parent.GetTags(nestingCount + 1) as IEnumerable<string>);
+            else
+                Debug.Log("TagGroups nesting is too deep!");
+        tags.AddRange(myTags as IEnumerable<string>);
+
+        return tags;
+    }
 
     protected int invertorsCount;
-    protected List<ConceptTag> tags;
+    protected List<string> tags;
 
     public void AddInvertor()
     {
@@ -21,7 +37,7 @@ public class Invertable : MonoBehaviour
         if (invertorsCount < 0) Debug.LogError("Invertor count is less then zero!");
     }
 
-    public bool ContainsTag(ConceptTag tag)
+    public bool ContainsTag(string tag)
     {
         return tags.Contains(tag);
     }
@@ -33,7 +49,7 @@ public class Invertable : MonoBehaviour
 
     public virtual void Initialize()
     {
-        tags = tagGroup.GetTags();
+        tags = GetTags();
     }
 
     public virtual void Reset()

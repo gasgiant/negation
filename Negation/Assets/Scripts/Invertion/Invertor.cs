@@ -19,7 +19,7 @@ public class Invertor
         return invertable.gameObject.name;
     }
 
-    public string Apply(ConceptTag tag, Invertable[] allInvertables)
+    public string Apply(string tag, Invertable[] allInvertables)
     {
         foreach (var invertable in allInvertables)
         {
@@ -30,7 +30,7 @@ public class Invertor
             }
         }
         InvertionManager.Instance.ResolveAllInvertables();
-        return tag.ToString();
+        return tag;
     }
 
     public void Clear()
