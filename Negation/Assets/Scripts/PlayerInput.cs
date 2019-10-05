@@ -19,6 +19,11 @@ public class PlayerInput : MonoBehaviour
             playerLook.ToggleActive();
         }
 
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            playerLook.ToggleActive();
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             InvertionManager.Instance.FreeSlot(0);
