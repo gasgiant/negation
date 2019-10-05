@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     [SerializeField]
+    private GameObject crosshair;
+    [SerializeField]
     private Transform lookTransform;
     [SerializeField] 
     private float mouseSensitivity;
@@ -27,11 +29,14 @@ public class PlayerLook : MonoBehaviour
         if (active)
         {
             Cursor.lockState = CursorLockMode.None;
-            
+            Cursor.visible = true;
+            crosshair.SetActive(false);
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            crosshair.SetActive(true);
             GameObject myEventSystem = GameObject.Find("EventSystem");
             myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
         }
@@ -48,11 +53,11 @@ public class PlayerLook : MonoBehaviour
 
         euler = lookTransform.eulerAngles;
         euler.x = x;
-        lookTransform.eulerAngles = euler;
+        lookTransform.rotation = Quaternion.Lerp(lookTransform.rotation, Quaternion.Euler(euler), 40 * Time.deltaTime);
 
         euler = transform.eulerAngles;
         euler.y = y;
-        transform.eulerAngles = euler;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(euler), 40 * Time.deltaTime);
     }
 
     private float ClampAngle(float angle, float min, float max)
