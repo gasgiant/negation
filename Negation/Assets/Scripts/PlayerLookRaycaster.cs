@@ -50,7 +50,7 @@ public class PlayerLookRaycaster : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.F) && !playerInput.CoursorFree)
                 {
-                    grabable.Grab(grabTransform);
+                    grabable.Grab(grabTransform, 2);
                     currentGrabable = grabable;
                     justGrabbed = true;
                 }    

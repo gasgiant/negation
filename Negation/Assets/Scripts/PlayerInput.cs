@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     public bool CoursorFree { get; private set; }
-
+    private bool justChanged;
     private GameObject crosshair;
 
 
@@ -17,15 +17,19 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (CoursorFree && Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            SetCoursorFree(false);
+            justChanged = true;
+        }
+
+        if (!justChanged && Input.GetKeyDown(KeyCode.Mouse1))
         {
             SetCoursorFree(true);
         }
+        justChanged = false;
 
-        if (Input.GetKeyUp(KeyCode.Mouse1))
-        {
-            SetCoursorFree(false);
-        }
+
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

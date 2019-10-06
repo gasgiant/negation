@@ -9,16 +9,23 @@ public class InvertionManager : MonoBehaviour
     private Invertable[] invertables;
 
     [SerializeField]
+    private List<string> initialTagsAvailable;
+
+    [SerializeField]
     private TagButton tagButtonPrefab;
 
     [SerializeField]
     private List<InvertorSlot> invertorSlots;
     private List<string> availableTags;
+    private List<string> activeTags;
+    private List<string> activeTagsAddedPyPostProcess;
+    private List<Invertor> activeTagInvertors;
     private Dictionary<string, TagButton> tagButtons;
 
     private RectTransform buttonsParent;
     private Vector3 tagButtonsTopPosition;
     private bool isTagButtonsTopPositionSet;
+    private int postProcessRecursCount;
 
     private void Awake()
     {
@@ -32,12 +39,15 @@ public class InvertionManager : MonoBehaviour
         tagButtons = new Dictionary<string, TagButton>();
         buttonsParent = GameObject.Find("Content").GetComponent<RectTransform>();
         availableTags = new List<string>();
+        activeTagInvertors = new List<Invertor>();
+        activeTags = new List<string>();
 
         tagButtons = new Dictionary<string, TagButton>();
 
-        AddAvailableTag("CUBE");
-        AddAvailableTag("SPHERE");
-        AddAvailableTag("RED");
+        foreach (var item in initialTagsAvailable)
+        {
+            AddAvailableTag(item);
+        }
     }
 
     public InvertorSlot GetFreeInvertorSlot()
@@ -55,7 +65,83 @@ public class InvertionManager : MonoBehaviour
         invertorSlots[index].FreeSlot();
     }
 
-    public void AddTagInverter(string tag)
+    public void RegisterInvertor(string tag, Invertor invertor)
+    {
+        activeTagInvertors.Add(invertor);
+        activeTags.Add(tag);
+
+        if (postProcessRecursCount < 3)
+            PostProcessInvertors();
+        else
+           Debug.Log("Recursion too deep in tag post process!");
+    }
+
+    public void UnregisterInvertor(string tag, Invertor invertor)
+    {
+        if (activeTagInvertors.Contains(invertor))
+        {
+            if (activeTags.Contains(tag))
+            {
+                activeTags.Remove(tag);
+            }
+            activeTagInvertors.Remove(invertor);
+            if (postProcessRecursCount < 3)
+                PostProcessInvertors();
+            else
+                Debug.Log("Recursion too deep in tag post process!");
+        }
+        
+    }
+
+    private void PostProcessInvertors()
+    {
+        List<string> conditions = new List<string>()
+        {
+            "RED",
+            "BLUE"
+        };
+
+        if (CheckHaveEveryTag(conditions) && !activeTags.Contains("MAGENTA"))
+        {
+            Invertor invertor = new Invertor();
+            invertor.Apply("MAGENTA", invertables, true, conditions);
+            postProcessRecursCount += 1;
+        }
+
+        postProcessRecursCount -= 1;
+        
+        List<Invertor> invertorsToClear = new List<Invertor>();
+
+        foreach (var invertor in activeTagInvertors)
+        {
+            if (invertor.AddedByPostprocessor)
+            {
+                if (!CheckHaveEveryTag(invertor.conditionsToStay))
+                {
+                    invertorsToClear.Add(invertor);
+                }
+            }
+        }
+
+        foreach (var invertor in invertorsToClear)
+        {
+            invertor.Clear();
+        }
+    }
+
+    private bool CheckHaveEveryTag(List<string> conditions)
+    {
+        foreach (var tag in conditions)
+        {
+            if (!activeTags.Contains(tag))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void AddTagInvertor(string tag)
     {
         InvertorSlot slot = GetFreeInvertorSlot();
         if (slot != null)
@@ -85,7 +171,6 @@ public class InvertionManager : MonoBehaviour
             
         }
     }
-
 
     public void ResolveAllInvertables()
     {

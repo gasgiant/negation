@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Invertor
 {
+    public string ConceptTag { private set; get; }
+    public bool AddedByPostprocessor { private set; get; }
+
+    public List<string> conditionsToStay { private set; get; }
+
     private List<Invertable> invertables;
 
     public Invertor()
@@ -19,7 +24,7 @@ public class Invertor
         return invertable.gameObject.name;
     }
 
-    public string Apply(string tag, Invertable[] allInvertables)
+    public string Apply(string tag, Invertable[] allInvertables, bool isPostProcess = false, List<string> conditions = null)
     {
         foreach (var invertable in allInvertables)
         {
@@ -29,6 +34,10 @@ public class Invertor
                 invertable.AddInvertor();
             }
         }
+        AddedByPostprocessor = isPostProcess;
+        conditionsToStay = conditions;
+        ConceptTag = tag;
+        InvertionManager.Instance.RegisterInvertor(tag, this);
         InvertionManager.Instance.ResolveAllInvertables();
         return tag;
     }
@@ -40,6 +49,10 @@ public class Invertor
             invertable.RemoveInvertor();
         }
         invertables.Clear();
+        if (ConceptTag != null)
+            InvertionManager.Instance.UnregisterInvertor(ConceptTag, this);
+
+        ConceptTag = null;
         InvertionManager.Instance.ResolveAllInvertables();
     }
 }

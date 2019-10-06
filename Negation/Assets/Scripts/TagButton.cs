@@ -26,6 +26,6 @@ public class TagButton : MonoBehaviour
 
     public void StartInvert()
     {
-        InvertionManager.Instance.AddTagInverter(conceptTag);
+        InvertionManager.Instance.AddTagInvertor(conceptTag);
     }
 }

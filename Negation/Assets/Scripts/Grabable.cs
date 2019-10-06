@@ -7,6 +7,7 @@ public class Grabable : MonoBehaviour
     public Transform Target { get; set; }
     private Rigidbody rb;
     private bool isGrabbed;
+    private int grabPriority;
 
     private void Start()
     {
@@ -21,9 +22,16 @@ public class Grabable : MonoBehaviour
         }
     }
 
-    public void Grab(Transform newTarget)
+    public void Grab(Transform newTarget, int priority)
     {
-        if (isGrabbed) Release();
+        if (isGrabbed)
+        {
+            if (priority > grabPriority)
+                Release();
+            else
+                return;
+        }
+        grabPriority = priority;
         rb.isKinematic = true;
         isGrabbed = true;
         Target = newTarget;
@@ -32,6 +40,7 @@ public class Grabable : MonoBehaviour
     public void Release()
     {
         if (!isGrabbed) return;
+        grabPriority = 0;
         rb.isKinematic = false;
         isGrabbed = false;
     }

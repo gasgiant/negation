@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void JumpInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping && Mathf.Abs(Physics.gravity.y) > 1)
         {
             isJumping = true;
             StartCoroutine(JumpEvent(0.3f));

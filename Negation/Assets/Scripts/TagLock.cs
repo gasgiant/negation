@@ -47,10 +47,12 @@ public class TagLock : MonoBehaviour
     private void CheckColliders(Collider[] colliders)
     {
         Invertable invertable;
+        Grabable grabable = null;
         bool check = false;
         foreach (var collider in colliders)
         {
             invertable = collider.gameObject.GetComponent<Invertable>();
+            grabable = collider.gameObject.GetComponent<Grabable>();
             if (invertable != null && CheckTags(invertable.GetTags()))
             {
                 check = true;
@@ -65,6 +67,7 @@ public class TagLock : MonoBehaviour
             lineRenderer.startColor = Color.green;
             lineRenderer.endColor = Color.green;
             text.text = "";
+            if (grabable != null) grabable.Grab(transform, 0);
         }
         else
         {
