@@ -23,7 +23,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         Vector3 input = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
-        characterController.SimpleMove(input.normalized * speed);
+        if (Input.GetKey(KeyCode.LeftShift))
+            characterController.SimpleMove(input.normalized * speed * 1.8f);
+        else
+            characterController.SimpleMove(input.normalized * speed);
 
         JumpInput();
         if (characterController.isGrounded)

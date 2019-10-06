@@ -24,7 +24,7 @@ public class PlayerLook : MonoBehaviour
 
     void Update()
     {
-        if (playerInput.Active) return;
+        if (playerInput.CoursorFree) return;
         x -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         y += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
 

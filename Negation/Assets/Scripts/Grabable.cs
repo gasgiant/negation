@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grabable : MonoBehaviour
 {
-    private Transform target;
+    public Transform Target { get; set; }
     private Rigidbody rb;
     private bool isGrabbed;
 
@@ -17,16 +17,16 @@ public class Grabable : MonoBehaviour
     {
         if (isGrabbed)
         {
-            transform.position = Vector3.Lerp(transform.position, target.position, 20 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, Target.position, 20 * Time.deltaTime);
         }
     }
 
     public void Grab(Transform newTarget)
     {
-        if (isGrabbed) return;
+        if (isGrabbed) Release();
         rb.isKinematic = true;
         isGrabbed = true;
-        target = newTarget;
+        Target = newTarget;
     }
 
     public void Release()

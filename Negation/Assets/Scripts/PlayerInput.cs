@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public bool Active { get; private set; }
+    public bool CoursorFree { get; private set; }
 
     private GameObject crosshair;
 
@@ -12,19 +12,19 @@ public class PlayerInput : MonoBehaviour
     private void Start()
     {
         crosshair = GameObject.Find("Crosshair");
-        SetCoursorActive(false);
+        SetCoursorFree(false);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            SetCoursorActive(true);
+            SetCoursorFree(true);
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
-            SetCoursorActive(false);
+            SetCoursorFree(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -44,9 +44,9 @@ public class PlayerInput : MonoBehaviour
 
     }
 
-    public void SetCoursorActive(bool b)
+    public void SetCoursorFree(bool b)
     {
-        Active = b;
+        CoursorFree = b;
         if (b)
         {
             Cursor.lockState = CursorLockMode.None;

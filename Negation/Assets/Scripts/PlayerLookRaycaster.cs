@@ -5,17 +5,23 @@ using UnityEngine;
 public class PlayerLookRaycaster : MonoBehaviour
 {
     [SerializeField]
-    private GameObject invertSymbol;
+    private PlayerInput playerInput;
     [SerializeField]
     private Transform grabTransform;
 
     [SerializeField]
     private LayerMask layer;
+    private GameObject invertSymbol;
     private Grabable grabable;
     private Grabable currentGrabable;
     private bool justGrabbed;
 
     private Invertable invertable;
+
+    private void Start()
+    {
+        invertSymbol = GameObject.Find("InvertSymbol");
+    }
     private void Update()
     {
         justGrabbed = false;
@@ -28,8 +34,8 @@ public class PlayerLookRaycaster : MonoBehaviour
             grabable = hitInfo.transform.gameObject.GetComponent<Grabable>();
             if (invertable != null)
             {
-                invertSymbol.SetActive(true);
-                if (Input.GetKeyDown(KeyCode.Mouse0))
+                if (!playerInput.CoursorFree) invertSymbol.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Mouse0) && !playerInput.CoursorFree)
                 {
                     InvertorSlot slot = InvertionManager.Instance.GetFreeInvertorSlot();
                     if (slot != null)
@@ -42,7 +48,7 @@ public class PlayerLookRaycaster : MonoBehaviour
 
             if (grabable != null && currentGrabable == null)
             {
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.F) && !playerInput.CoursorFree)
                 {
                     grabable.Grab(grabTransform);
                     currentGrabable = grabable;
@@ -58,7 +64,10 @@ public class PlayerLookRaycaster : MonoBehaviour
             currentGrabable = null;
         }
 
-
+        if (currentGrabable != null && currentGrabable.Target != grabTransform)
+        {
+            currentGrabable = null;
+        }
 
     }
 }
