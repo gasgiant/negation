@@ -5,47 +5,26 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     [SerializeField]
-    private GameObject crosshair;
-    [SerializeField]
     private Transform lookTransform;
     [SerializeField] 
     private float mouseSensitivity;
+
+    private PlayerInput playerInput;
 
     private float x;
     private float y;
     Vector3 euler;
 
-    bool active;
-
     private void Awake()
     {
         x = lookTransform.eulerAngles.x;
         y = transform.eulerAngles.y;
-    }
-
-
-    public void ToggleActive()
-    {
-        if (active)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            crosshair.SetActive(false);
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            crosshair.SetActive(true);
-            GameObject myEventSystem = GameObject.Find("EventSystem");
-            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
-        }
-        active = !active;
+        playerInput = GetComponent<PlayerInput>();
     }
 
     void Update()
     {
-        if (!active) return;
+        if (playerInput.Active) return;
         x -= Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
         y += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
 

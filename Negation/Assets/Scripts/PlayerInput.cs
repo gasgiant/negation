@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerLook playerLook;
+    public bool Active { get; private set; }
+
+    private GameObject crosshair;
+
 
     private void Start()
     {
-        playerLook.ToggleActive();
+        crosshair = GameObject.Find("Crosshair");
+        SetCoursorActive(false);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            playerLook.ToggleActive();
+            SetCoursorActive(true);
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse1))
         {
-            playerLook.ToggleActive();
+            SetCoursorActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -39,5 +42,24 @@ public class PlayerInput : MonoBehaviour
             InvertionManager.Instance.FreeSlot(2);
         }
 
+    }
+
+    public void SetCoursorActive(bool b)
+    {
+        Active = b;
+        if (b)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            crosshair.SetActive(false);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            crosshair.SetActive(true);
+            GameObject myEventSystem = GameObject.Find("EventSystem");
+            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+        }
     }
 }
