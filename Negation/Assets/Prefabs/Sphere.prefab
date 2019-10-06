@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   myTags:
-  - Sphere
+  - SPHERE
 --- !u!114 &-738554493685135690
 MonoBehaviour:
   m_ObjectHideFlags: 0

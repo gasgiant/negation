@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 4601427359580127976, guid: b5a130c626c0677468eef0150a99d243,
         type: 3}
       propertyPath: myTags.Array.data[0]
-      value: Red
+      value: RED
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5a130c626c0677468eef0150a99d243, type: 3}

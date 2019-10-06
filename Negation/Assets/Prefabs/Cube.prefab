@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
   myTags:
-  - Cube
+  - CUBE
 --- !u!114 &-1106240446995764112
 MonoBehaviour:
   m_ObjectHideFlags: 0

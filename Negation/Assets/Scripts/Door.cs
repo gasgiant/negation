@@ -25,8 +25,8 @@ public class Door : MonoBehaviour
     {
         foreach (var item in locks)
         {
-            if (!item.gameObject.activeInHierarchy) return false;
+            if (item.gameObject.activeInHierarchy) return true;
         }
-        return true;
+        return false;
     }
 }

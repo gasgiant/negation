@@ -85,7 +85,7 @@ PrefabInstance:
     - target: {fileID: 2628369263388437196, guid: 062c0c3c5ec5f304594fc30417719ac2,
         type: 3}
       propertyPath: myTags.Array.data[0]
-      value: Red
+      value: RED
       objectReference: {fileID: 0}
     - target: {fileID: 2628369263388437196, guid: 062c0c3c5ec5f304594fc30417719ac2,
         type: 3}

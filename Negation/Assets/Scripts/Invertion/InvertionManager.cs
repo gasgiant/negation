@@ -35,9 +35,9 @@ public class InvertionManager : MonoBehaviour
 
         tagButtons = new Dictionary<string, TagButton>();
 
-        AddAvailableTag("Cube");
-        AddAvailableTag("Sphere");
-        AddAvailableTag("Red");
+        AddAvailableTag("CUBE");
+        AddAvailableTag("SPHERE");
+        AddAvailableTag("RED");
     }
 
     public InvertorSlot GetFreeInvertorSlot()
