@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-            LoadLevel("Level3");
+        //if (Input.GetKeyDown(KeyCode.E))
+        ///    LoadLevel("Level3");
     }
 
     public void OnDeath(string reason)

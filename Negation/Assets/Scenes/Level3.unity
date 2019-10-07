@@ -5699,6 +5699,16 @@ PrefabInstance:
       propertyPath: deathSourse
       value: A LOT OF TEAPOTS
       objectReference: {fileID: 0}
+    - target: {fileID: 5456630623057550621, guid: d75b2bb66b5c66c48a75a2163efe99f5,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456630623057550621, guid: d75b2bb66b5c66c48a75a2163efe99f5,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.24
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d75b2bb66b5c66c48a75a2163efe99f5, type: 3}
 --- !u!4 &665860148 stripped
@@ -15757,12 +15767,17 @@ PrefabInstance:
     - target: {fileID: 523523614180271799, guid: 9eec71be93f0a804a85c9d4d0a7f5ca0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 12.699951
+      value: 12.700195
       objectReference: {fileID: 0}
     - target: {fileID: 523523614180271799, guid: 9eec71be93f0a804a85c9d4d0a7f5ca0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 14.599976
+      value: 14.600098
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195118363641845381, guid: 9eec71be93f0a804a85c9d4d0a7f5ca0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9eec71be93f0a804a85c9d4d0a7f5ca0, type: 3}
