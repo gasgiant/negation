@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb89a24686184b943acef9e0a9181053, type: 3}
+  m_Name: sp8
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 99066f17c56ffc043bafb8712e36ce48, type: 3}
+  lines:
+  - timeCode: 1.835
+    text: And these codes...
+  - timeCode: 4.05
+    text: It's all about concepts now,
+  - timeCode: 6.38
+    text: but where are the *real things*?
+  - timeCode: 11.315
+    text: What kind of *being* it is if it's dictated by fucking words?
+  - timeCode: 14.57
+    text: Anyone would choose nihil.
+  - timeCode: 18.285
+    text: But if they're gonna let me turn all this chaos off then it's fine.

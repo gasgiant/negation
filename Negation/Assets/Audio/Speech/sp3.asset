@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bb89a24686184b943acef9e0a9181053, type: 3}
-  m_Name: New speech
+  m_Name: sp3
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: 4117740d865b47a4fa27d18cdb4bea90, type: 3}
+  clip: {fileID: 8300000, guid: 9dcd847692e54054a92c43f4809df15a, type: 3}
   lines:
-  - timeCode: 3
-    text: Pink fluffy unicorns dancing on rainbows
-  - timeCode: 6
-    text: Orewa o chnin-chin gaday sequdan asdkadhjfjsd
-  - timeCode: 9
-    text: Lorem ipsum i miised important stuff because of the jam
+  - timeCode: 3.67
+    text: I guess I can turn things on and off.
+  - timeCode: 7.215
+    text: And how do I turn off everything?
+  - timeCode: 13.175
+    text: "I'm \xABthrown into the world\xBB, but hope if I try hard enough I can
+      go back."

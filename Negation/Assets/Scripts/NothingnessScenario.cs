@@ -14,9 +14,9 @@ public class NothingnessScenario : MonoBehaviour
 
     IEnumerator Scenario()
     {
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(12f);
         negationSymbol.SetActive(true);
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(10f);
         negationTip.SetActive(true);
         while (true)
         {

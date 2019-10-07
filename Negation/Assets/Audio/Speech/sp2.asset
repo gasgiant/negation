@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb89a24686184b943acef9e0a9181053, type: 3}
   m_Name: sp2
   m_EditorClassIdentifier: 
-  clip: {fileID: 0}
-  lines: []
+  clip: {fileID: 8300000, guid: e3883657b0b9b3545bf9974f02ca5b0e, type: 3}
+  lines:
+  - timeCode: 4.765
+    text: Oh fuck! What've I...
+  - timeCode: 13.525
+    text: What are those around me? Th-things? Why do they... exist?
+  - timeCode: 16.525
+    text: Shit it's so absurd I need to get out.

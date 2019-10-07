@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb89a24686184b943acef9e0a9181053, type: 3}
+  m_Name: sp5
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: cceeb86752c55b24589072c4af0d72bc, type: 3}
+  lines:
+  - timeCode: 3.68
+    text: It's so strange to experience all this.
+  - timeCode: 9.1
+    text: I'm fucking sick of *being* but it also tastes so familiar.
+  - timeCode: 12.615
+    text: Do I... remember it?
+  - timeCode: 16.465
+    text: It's like I'm experiencing all this... again?
+  - timeCode: 21.185
+    text: In that case I haven't *been* for how long?
+  - timeCode: 24.295
+    text: Well, it's a stupid question. Time just...
+  - timeCode: 26.93
+    text: isn't present in my usual state.

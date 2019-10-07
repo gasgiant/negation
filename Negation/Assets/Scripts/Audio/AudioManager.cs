@@ -193,6 +193,8 @@ public class AudioManager : MonoBehaviour
             soundPlayersOfGroupCount.Add(key, 0);
             nextTimeAllowed.Add(key, 0);
         }
+
+        ChangeMusicVolume(0.5f);
     }
 
     public void PlayMenuMusic()

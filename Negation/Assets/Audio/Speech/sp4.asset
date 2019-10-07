@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb89a24686184b943acef9e0a9181053, type: 3}
+  m_Name: sp4
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 3082252513a1ad94ca7a2623fe0a8018, type: 3}
+  lines:
+  - timeCode: 4.325
+    text: Fine, it's not just about single objects but...
+  - timeCode: 6.605
+    text: '...whole ideas now.'
+  - timeCode: 11.08
+    text: Doing some universals here, what am I, fucking Plato?
+  - timeCode: 15.715
+    text: Seems like I'm not thrown into the world but a graphics benchmark test.

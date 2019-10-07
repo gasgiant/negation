@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb89a24686184b943acef9e0a9181053, type: 3}
+  m_Name: sp1
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: ad9b404da0b329d4c94614e8a7c25173, type: 3}
+  lines:
+  - timeCode: 3.795
+    text: Ahhhh... Nothing.
+  - timeCode: 6.845
+    text: Good old nonexistence.
+  - timeCode: 14.405
+    text: Nothing bothers me, nothing to worry about, nothing ruins my non-being.
+  - timeCode: 17.205
+    text: Wait, what's this?
+  - timeCode: 20.685
+    text: Eh, some kind of math..?
+  - timeCode: 22.88
+    text: What if I...
