@@ -16319,6 +16319,31 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6195118363667617415, guid: 9eec71be93f0a804a85c9d4d0a7f5ca0,
+        type: 3}
+      propertyPath: initialTagsAvailable.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195118363667617415, guid: 9eec71be93f0a804a85c9d4d0a7f5ca0,
+        type: 3}
+      propertyPath: initialTagsAvailable.Array.data[0]
+      value: TEAPOT
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195118363667617415, guid: 9eec71be93f0a804a85c9d4d0a7f5ca0,
+        type: 3}
+      propertyPath: initialTagsAvailable.Array.data[1]
+      value: RED
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195118363667617415, guid: 9eec71be93f0a804a85c9d4d0a7f5ca0,
+        type: 3}
+      propertyPath: initialTagsAvailable.Array.data[2]
+      value: LOCK
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195118363667617415, guid: 9eec71be93f0a804a85c9d4d0a7f5ca0,
+        type: 3}
+      propertyPath: initialTagsAvailable.Array.data[3]
+      value: FURNITURE
+      objectReference: {fileID: 0}
     - target: {fileID: 523523614180271799, guid: 9eec71be93f0a804a85c9d4d0a7f5ca0,
         type: 3}
       propertyPath: m_AnchoredPosition.x

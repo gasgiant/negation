@@ -17,16 +17,16 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (CoursorFree && (Input.GetKeyDown(KeyCode.Mouse1))) //|| Input.GetKeyDown(KeyCode.Mouse0)))
-        {
-            SetCoursorFree(false);
-            justChanged = true;
-        }
+        //if (CoursorFree && (Input.GetKeyDown(KeyCode.Mouse1))) //|| Input.GetKeyDown(KeyCode.Mouse0)))
+        //{
+        //    SetCoursorFree(false);
+        //    justChanged = true;
+        //}
 
-        if (!justChanged && Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            SetCoursorFree(true);
-        }
+        //if (!justChanged && Input.GetKeyDown(KeyCode.Mouse1))
+        //{
+        //    SetCoursorFree(true);
+        //}
         justChanged = false;
 
 

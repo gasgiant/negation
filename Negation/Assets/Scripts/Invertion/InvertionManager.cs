@@ -27,6 +27,9 @@ public class InvertionManager : MonoBehaviour
     private bool isTagButtonsTopPositionSet;
     private int postProcessRecursCount;
 
+    private int activeTagButtonIndex = -1;
+
+
     private void Awake()
     {
         Instance = this;
@@ -163,6 +166,11 @@ public class InvertionManager : MonoBehaviour
             availableTags.Add(tag);
             TagButton button = Instantiate(tagButtonPrefab);
             tagButtons.Add(tag, button);
+            if (activeTagButtonIndex < 0)
+            {
+                activeTagButtonIndex = 0;
+                tagButtons[availableTags[activeTagButtonIndex]].SetAsActive(true);
+            }
             button.SetTag(tag);
             button.transform.SetParent(buttonsParent, false);
             if (!isTagButtonsTopPositionSet) tagButtonsTopPosition = button.GetComponent<RectTransform>().position;
@@ -175,6 +183,48 @@ public class InvertionManager : MonoBehaviour
             }
             
         }
+    }
+
+    private void Update()
+    {
+        if (availableTags.Count > 0)
+        {
+            if (Mathf.Abs(Input.mouseScrollDelta.y) > 0.1f || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Q))
+            {
+
+                if (Input.mouseScrollDelta.y > 0 || Input.GetKeyDown(KeyCode.Q))
+                {
+                    activeTagButtonIndex -= 1;
+                }
+                else
+                {
+                    if (Input.mouseScrollDelta.y < 0 || Input.GetKeyDown(KeyCode.E))
+                    {
+                        activeTagButtonIndex += 1;
+                    }
+                }
+
+                if (activeTagButtonIndex > availableTags.Count - 1)
+                    activeTagButtonIndex = availableTags.Count - 1;
+                if (activeTagButtonIndex < 0)
+                    activeTagButtonIndex = 0;
+
+
+                for (int i = 0; i < availableTags.Count; i++)
+                {
+                    tagButtons[availableTags[i]].SetAsActive(i == activeTagButtonIndex);
+                }
+
+
+                
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                tagButtons[availableTags[activeTagButtonIndex]].StartInvert();
+            }
+
+        }  
     }
 
     public void ResolveAllInvertables()
