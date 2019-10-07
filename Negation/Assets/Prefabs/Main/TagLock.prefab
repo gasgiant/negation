@@ -656,9 +656,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c67d8700087324781a7e38a834fac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reversMode: 0
   requiredTags:
   - CUBE
-  lockObject: {fileID: 948948897933344506}
+  lockObject: {fileID: 948948897933344507}
   lockGlow: {fileID: 948948898825816908}
   lineRenderer: {fileID: 948948897324693795}
   text: {fileID: 948948897412132166}

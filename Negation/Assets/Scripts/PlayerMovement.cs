@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
         if (characterController.isGrounded)
         {
             lastPositionOnGround = transform.position;
-            
         }
     }
 
@@ -69,6 +68,12 @@ public class PlayerMovement : MonoBehaviour
             characterController.enabled = false;
             transform.position = lastPositionOnGround;
             characterController.enabled = true;
+        }
+
+        if (other.CompareTag("Death") && !GameManager.Instance.isPlayerDead)
+        {
+            characterController.enabled = false;
+            transform.position -= Vector3.up;
         }
     }
 }

@@ -6,9 +6,11 @@ using TMPro;
 public class TagLock : MonoBehaviour
 {
     [SerializeField]
+    bool reversMode;
+    [SerializeField]
     private List<string> requiredTags;
     [SerializeField]
-    private Lock lockObject;
+    private GameObject lockObject;
     [SerializeField]
     private Renderer lockGlow;
     [SerializeField]
@@ -41,7 +43,10 @@ public class TagLock : MonoBehaviour
 
     private void Update()
     {
-        CheckColliders(Physics.OverlapSphere(transform.position, 1));
+        if (!reversMode)
+            CheckColliders(Physics.OverlapSphere(transform.position, 1));
+        else
+            SetOpen(!lockObject.activeInHierarchy);
     }
 
     private void CheckColliders(Collider[] colliders)
@@ -60,22 +65,47 @@ public class TagLock : MonoBehaviour
             }
         }
 
-        if (check)
+        SetOpen(check, grabable);
+    }
+
+    private void SetOpen(bool check, Grabable grabable = null)
+    {
+        if (!reversMode)
         {
-            lockObject.gameObject.SetActive(false);
-            lockGlow.material = greenMat;
-            lineRenderer.startColor = Color.green;
-            lineRenderer.endColor = Color.green;
-            text.text = "";
-            if (grabable != null) grabable.Grab(transform, 0);
+            if (check)
+            {
+                lockObject.SetActive(false);
+                lockGlow.material = greenMat;
+                lineRenderer.startColor = Color.green;
+                lineRenderer.endColor = Color.green;
+                text.text = "";
+                if (grabable != null) grabable.Grab(transform, 0);
+            }
+            else
+            {
+                lockObject.SetActive(true);
+                lockGlow.material = redMat;
+                lineRenderer.startColor = Color.red;
+                lineRenderer.endColor = Color.red;
+                text.text = textRequirement;
+            }
         }
         else
         {
-            lockObject.gameObject.SetActive(true);
-            lockGlow.material = redMat;
-            lineRenderer.startColor = Color.red;
-            lineRenderer.endColor = Color.red;
-            text.text = textRequirement;
+            if (check)
+            {
+                lockGlow.material = greenMat;
+                lineRenderer.startColor = Color.green;
+                lineRenderer.endColor = Color.green;
+                text.text = "";
+            }
+            else
+            {
+                lockGlow.material = redMat;
+                lineRenderer.startColor = Color.red;
+                lineRenderer.endColor = Color.red;
+                text.text = "REMOVE\nOBJECT";
+            }
         }
     }
 
