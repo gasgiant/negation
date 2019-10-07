@@ -70,6 +70,11 @@ public class InvertionManager : MonoBehaviour
         activeTagInvertors.Add(invertor);
         activeTags.Add(tag);
 
+        if (activeTags.Contains("NOT TEAPOT")  && activeTags.Contains("TEAPOT"))
+        {
+            GameManager.Instance.LoadLevel("Nothingness");
+        }
+
         if (postProcessRecursCount < 3)
             PostProcessInvertors();
         else
@@ -174,6 +179,8 @@ public class InvertionManager : MonoBehaviour
 
     public void ResolveAllInvertables()
     {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySound("Invert");
         foreach (var invertable in invertables)
         {
             invertable.Resolve();

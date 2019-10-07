@@ -28,14 +28,28 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+            LoadLevel(currentLevel);
+
         if (Input.GetKey(KeyCode.LeftAlt))
         {
+            if (Input.GetKeyDown(KeyCode.Alpha0))
+                LoadLevel("Nothingness");
             if (Input.GetKeyDown(KeyCode.Alpha1))
                 LoadLevel("Level1");
             if (Input.GetKeyDown(KeyCode.Alpha2))
                 LoadLevel("Level2");
             if (Input.GetKeyDown(KeyCode.Alpha3))
                 LoadLevel("Level3");
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+                LoadLevel("Level4");
+            if (Input.GetKeyDown(KeyCode.Alpha5))
+                LoadLevel("Level5");
+            if (Input.GetKeyDown(KeyCode.Alpha6))
+                LoadLevel("Level6");
+
+            if (Input.GetKeyDown(KeyCode.Alpha9))
+                LoadLevel("LevelFinal");
         }
     }
 

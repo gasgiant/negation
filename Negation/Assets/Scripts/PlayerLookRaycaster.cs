@@ -12,6 +12,10 @@ public class PlayerLookRaycaster : MonoBehaviour
     [SerializeField]
     private LayerMask layer;
     private GameObject invertSymbol;
+    private GameObject grabTip;
+    private GameObject releaseTip;
+
+
     private Grabable grabable;
     private Grabable currentGrabable;
     private bool justGrabbed;
@@ -21,11 +25,15 @@ public class PlayerLookRaycaster : MonoBehaviour
     private void Start()
     {
         invertSymbol = GameObject.Find("InvertSymbol");
+        grabTip = GameObject.Find("GrabTip");
+        releaseTip = GameObject.Find("ReleaseTip");
     }
     private void Update()
     {
         justGrabbed = false;
         invertSymbol.SetActive(false);
+        grabTip.SetActive(false);
+        releaseTip.SetActive(false);
 
         RaycastHit hitInfo;
         if (Physics.Raycast(new Ray(transform.position, transform.forward), out hitInfo, 10000, layer))
@@ -34,7 +42,10 @@ public class PlayerLookRaycaster : MonoBehaviour
             grabable = hitInfo.transform.gameObject.GetComponent<Grabable>();
             if (invertable != null)
             {
-                if (!playerInput.CoursorFree) invertSymbol.SetActive(true);
+                if (!playerInput.CoursorFree)
+                {
+                    invertSymbol.SetActive(true);
+                }
                 if (Input.GetKeyDown(KeyCode.Mouse0) && !playerInput.CoursorFree)
                 {
                     InvertorSlot slot = InvertionManager.Instance.GetFreeInvertorSlot();
@@ -48,6 +59,7 @@ public class PlayerLookRaycaster : MonoBehaviour
 
             if (grabable != null && currentGrabable == null)
             {
+                grabTip.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.F) && !playerInput.CoursorFree)
                 {
                     grabable.Grab(grabTransform, 2);
@@ -57,6 +69,12 @@ public class PlayerLookRaycaster : MonoBehaviour
             }
 
         }
+
+        if (currentGrabable != null)
+        {
+            releaseTip.SetActive(true);
+        }
+
 
         if (!justGrabbed && Input.GetKeyDown(KeyCode.F) && currentGrabable != null)
         {

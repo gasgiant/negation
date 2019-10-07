@@ -14,19 +14,37 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 lastPositionOnGround;
     private bool isJumping;
 
+    private Vector3 prevStepPosition;
+
     private CharacterController characterController;
     void Start()
     {
+        prevStepPosition = transform.position;
         characterController = GetComponent<CharacterController>();
     }
 
     void Update()
     {
         Vector3 input = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
-        if (Input.GetKey(KeyCode.LeftShift))
-            characterController.SimpleMove(input.normalized * speed * 1.8f);
+        if (Physics.gravity.magnitude > 0.1f)
+        {
+            
+            if (Input.GetKey(KeyCode.LeftShift))
+                characterController.SimpleMove(input.normalized * speed * 1.8f);
+            else
+                characterController.SimpleMove(input.normalized * speed);
+        }
         else
-            characterController.SimpleMove(input.normalized * speed);
+        {
+            characterController.Move(input.normalized * speed * Time.deltaTime);
+        }
+
+        if (characterController.isGrounded && (prevStepPosition - transform.position).magnitude > 0.3)
+        {
+            if (AudioManager.Instance != null)
+                AudioManager.Instance.PlaySound("Steps");
+            prevStepPosition = transform.position;
+        }
 
         JumpInput();
         if (characterController.isGrounded)
@@ -37,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void JumpInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping && Mathf.Abs(Physics.gravity.y) > 1)
+        if (Input.GetKeyDown(KeyCode.Space) && !isJumping && Physics.gravity.magnitude > 0.1f)
         {
             isJumping = true;
             StartCoroutine(JumpEvent(0.3f));

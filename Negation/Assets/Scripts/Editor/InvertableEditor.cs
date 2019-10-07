@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Invertable))]
+//[CustomEditor(typeof(Invertable))]
 public class TagGroupEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -13,6 +13,7 @@ public class TagGroupEditor : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("parent"));
 
         EditorList.Show(serializedObject.FindProperty("myTags"), EditorListOption.Buttons);
+
 
         serializedObject.ApplyModifiedProperties();
 

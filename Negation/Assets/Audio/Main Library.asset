@@ -14,9 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundGroups:
   - groupID: Steps
-    volume: 1
+    volume: 0.585
+    deadTime: 0.35
+    sounds:
+    - {fileID: 8300000, guid: 718cdf19d840fac4c94a133eddb24a66, type: 3}
+    - {fileID: 8300000, guid: fb4167e0e6dc61f41853d5d48f88deca, type: 3}
+    - {fileID: 8300000, guid: be414c80e3d398242b466911d9d88b50, type: 3}
+    - {fileID: 8300000, guid: 26bb008f4dae33e44a425ddb0291404d, type: 3}
+    - {fileID: 8300000, guid: 82a0dfa96fd6ca1408d6eaf1e17316da, type: 3}
+    randomize: 1
+    pitchRndValue: 0.1
+    volumeRndValue: 0.1
+    interruptible: 0
+    maxSoursesCount: 5
+    loop: 0
+    fadeOutTime: 0.2
+    loopMode: 0
+    maxLoopCount: 10
+    fadeStartTime: 0
+    fadeDuration: 0.2
+  - groupID: Invert
+    volume: 0.17
     deadTime: 0
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 09836c1c6e9a7c4449822710da1e1149, type: 3}
+    - {fileID: 8300000, guid: 7ebdf9a4498c5f944a0869f1585685c8, type: 3}
+    - {fileID: 8300000, guid: ec8606f87bd816146a86ab20704c9fae, type: 3}
+    - {fileID: 8300000, guid: 1debf0a4a0d26074cb67e045d0c157fc, type: 3}
+    - {fileID: 8300000, guid: 3cd07ff9867b2c146870e138025d73ed, type: 3}
     randomize: 0
     pitchRndValue: 0.1
     volumeRndValue: 0.1
