@@ -17,7 +17,7 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (CoursorFree && Input.GetKeyDown(KeyCode.Mouse1))
+        if (CoursorFree && (Input.GetKeyDown(KeyCode.Mouse1))) //|| Input.GetKeyDown(KeyCode.Mouse0)))
         {
             SetCoursorFree(false);
             justChanged = true;
@@ -59,11 +59,18 @@ public class PlayerInput : MonoBehaviour
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            
             crosshair.SetActive(true);
-            GameObject myEventSystem = GameObject.Find("EventSystem");
-            myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+            LockCoursor();
+            //Invoke("LockCoursor", 0.25f);
         }
+    }
+
+    public void LockCoursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
     }
 }

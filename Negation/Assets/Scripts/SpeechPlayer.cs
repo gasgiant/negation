@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpeechPlayer : MonoBehaviour
 {
-    public static SpeechPlayer Instance;
-
     public Speech speech;
 
     [SerializeField]
@@ -13,17 +11,6 @@ public class SpeechPlayer : MonoBehaviour
 
     private int activeSourceIndex;
     private Coroutine volumeRoutine, textRoutine;
-
-    private void Awake()
-    {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void Update()
     {

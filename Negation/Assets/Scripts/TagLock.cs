@@ -8,6 +8,8 @@ public class TagLock : MonoBehaviour
     [SerializeField]
     bool reversMode;
     [SerializeField]
+    bool openWhenHaveObject;
+    [SerializeField]
     private List<string> requiredTags;
     [SerializeField]
     private GameObject lockObject;
@@ -46,7 +48,17 @@ public class TagLock : MonoBehaviour
         if (!reversMode)
             CheckColliders(Physics.OverlapSphere(transform.position, 1));
         else
-            SetOpen(!lockObject.activeInHierarchy);
+        {
+            if (openWhenHaveObject)
+            {
+                SetOpen(lockObject.activeInHierarchy);
+            }
+            else
+            {
+                SetOpen(!lockObject.activeInHierarchy);
+            }
+        }
+            
     }
 
     private void CheckColliders(Collider[] colliders)
@@ -104,7 +116,10 @@ public class TagLock : MonoBehaviour
                 lockGlow.material = redMat;
                 lineRenderer.startColor = Color.red;
                 lineRenderer.endColor = Color.red;
-                text.text = "REMOVE\nOBJECT";
+                if (openWhenHaveObject)
+                    text.text = "OBJECT\nMISSING";
+                else
+                    text.text = "REMOVE\nOBJECT";
             }
         }
     }
