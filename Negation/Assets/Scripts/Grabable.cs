@@ -6,12 +6,14 @@ public class Grabable : MonoBehaviour
 {
     public Transform Target { get; set; }
     private Rigidbody rb;
+    private new Collider collider;
     private bool isGrabbed;
     private int grabPriority;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
     }
 
     private void Update()
@@ -33,6 +35,7 @@ public class Grabable : MonoBehaviour
         }
         grabPriority = priority;
         rb.isKinematic = true;
+        collider.isTrigger = true;
         isGrabbed = true;
         Target = newTarget;
     }
@@ -42,6 +45,7 @@ public class Grabable : MonoBehaviour
         if (!isGrabbed) return;
         grabPriority = 0;
         rb.isKinematic = false;
+        collider.isTrigger = false;
         isGrabbed = false;
     }
 }
