@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && !isPlayerDead)
+        if (Input.GetKeyDown(KeyCode.R))
             LoadLevel(currentLevel);
 
         if (Input.GetKey(KeyCode.LeftAlt))
