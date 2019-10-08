@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     public void LoadLevel(string name)
     {
         currentLevel = name;
+        isPlayerDead = false;
         SceneManager.LoadScene(name);
     }
 }

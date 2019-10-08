@@ -39,12 +39,12 @@ public class SpeechPlayer : MonoBehaviour
         Subtitles subtitles = FindObjectOfType<Subtitles>();
         if (subtitles != null)
         {
-            float startTime = Time.unscaledTime;
+            float startTime = Time.time;
             subtitles.SetActive(true);
             foreach (var line in speech.lines)
             {
                 subtitles.SetSubtitlesText(line.text);
-                while (Time.unscaledTime < startTime + line.timeCode)
+                while (Time.time < startTime + line.timeCode)
                 {
                     yield return null;
                 }
